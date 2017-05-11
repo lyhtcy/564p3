@@ -1,0 +1,5 @@
+SELECT s.Long_Desc, MAX(count)
+FROM (SELECT NDB_No, COUNT(Nutr_No) AS count
+		FROM NUT_DATA
+		GROUP BY NDB_No
+	 ) AS n JOIN FOOD_DES s ON n.NDB_NO = s.NDB_No;

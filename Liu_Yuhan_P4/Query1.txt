@@ -1,0 +1,4 @@
+SELECT Nutr_Val FROM NUT_DATA 
+	WHERE Nutr_No = '205' 
+		AND NDB_No = (SELECT NDB_No FROM FOOD_DES
+					WHERE Long_Desc = 'McDONALDS, Hamburger');

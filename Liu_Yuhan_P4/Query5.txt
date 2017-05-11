@@ -1,0 +1,8 @@
+SELECT s.Long_Desc
+	FROM NUT_DATA a JOIN FOOD_DES s ON (s.NDB_No = a. NDB_No)
+	GROUP BY s.Long_Desc HAVING (SUM (a.Nutr_Val)/COUNT(a.Nutr_No)) > 
+		(SELECT SUM (a.Nutr_Val)/COUNT(a.Nutr_No)
+			FROM NUT_DATA a JOIN FOOD_DES s ON (a.NDB_No = s. NDB_No)
+			WHERE Long_Desc = 'McDONALDS, Hamburger'
+		)
+;

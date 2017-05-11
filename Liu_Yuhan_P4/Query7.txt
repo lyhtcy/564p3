@@ -1,0 +1,12 @@
+SELECT Long_Desc, SUM(Nutr_Val)
+FROM FOOD_DES s JOIN NUT_DATA a ON (s.NDB_No = a.NDB_No)
+WHERE s.NDB_No IN (
+	SELECT DISTINCT NDB_No FROM NUT_DATA
+	WHERE Nutr_No = ( SELECT Nutr_No FROM NUTR_DEF
+						WHERE NutrDesc = 'Caffeine')
+	INTERSECT SELECT DISTINCT NDB_No FROM NUT_DATA
+	WHERE Nutr_No = ( SELECT Nutr_No FROM NUTR_DEF
+						WHERE NutrDesc = 'Alcohol, ethyl')
+) 
+GROUP BY (Long_Desc)
+;

@@ -1,0 +1,3 @@
+SELECT a.Nutr_No, Tagname, COUNT (a.NDB_No)
+	FROM NUTR_DEF f JOIN NUT_DATA a ON (f.Nutr_No = a.Nutr_No)
+	GROUP BY a.Nutr_No;
